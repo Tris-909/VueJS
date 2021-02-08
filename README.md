@@ -90,3 +90,43 @@ const app = Vue.createApp({
 - Code above will return HTML element if you want to output HTML Elements instead of texts or functions by using v-html.
 
 - v-html is also used to return functions if you want
+
+### Adding eventListener with Vue using v-on:(event)
+
+- HTML Code :
+
+```html
+<section id="events">
+  <h2>Events in Action</h2>
+  <button v-on:click="add(1)">Add</button>
+  <button v-on:click="remove">Remove</button>
+  <p>Result: {{ counter }}</p>
+</section>
+```
+
+- Javascript Code :
+
+```javascript
+const app = Vue.createApp({
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  methods: {
+    add(num) {
+      return (this.counter = this.counter + num);
+    },
+    remove() {
+      return (this.counter = this.counter - 1);
+    },
+  },
+}).mount("#events");
+```
+
+- We use v-on:(events) like v-on:click to add Cick event through VueJS. We can have many different events.
+
+- v-on:click="" for click event
+- v-on:input="function($event, arguments)" for onChange of input element
+- v-on:submit.prevent="" for form submission
+- v-once for making sure that the data in their won't change
