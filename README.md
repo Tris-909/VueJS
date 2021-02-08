@@ -136,3 +136,27 @@ const app = Vue.createApp({
 
 - we use `computed` when we need a state that related to other states.
 - we use `watch` the same way we user useEffect in React but watch only triggers when the value we set up change.
+
+### Shorthand for v-bind: and v-on:
+
+- v-bind:class => :class
+- v-on:click => @click
+
+### Binding dynamic classes with VueJS
+
+```html
+<section id="styling">
+  <div
+    class="demo"
+    :class="{active: dynamicStyle[0]}"
+    @click="toggleStyles(0)"
+  ></div>
+</section>
+```
+
+- We won't go into javascript file because the logic there is simple. It is just for turning dynamicStyle value from false to true and the opposite.
+
+- What we learn here are dynamic binding classes from VueJS :
+  - `class` will decide what class this div will always have
+  - `:class` stands for v-bind:class. This is used for binding new class based on the codition. In this case, dynamicStyle is that condition.
+  - `@click` is for onCLickHandler
