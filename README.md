@@ -130,3 +130,9 @@ const app = Vue.createApp({
 - v-on:input="function($event, arguments)" for onChange of input element
 - v-on:submit.prevent="" for form submission
 - v-once for making sure that the data in their won't change
+- v-model for two-way binding of input element
+
+### Computed and Watch Options on Vue.createApp
+
+- we use `computed` when we need a state that related to other states.
+- we use `watch` the same way we user useEffect in React but watch only triggers when the value we set up change.
