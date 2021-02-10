@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Monster Slayer</h1>
+    </header>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monster Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value"
+          :style="monsterHealthBar">{{monsterHealth}}</div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Your Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value"
+          :style="playerHealthBar">{{playerHealth}}</div>
+        </div>
+      </section>
+      <section class="container" v-if="gameover">
+        <h2>Game Over</h2>
+        <h3 v-if="winner == 'player'"> You have WIN ! Hooray</h3>
+        <h3 v-else-if="winner == 'monster'"> You have lost :> </h3>
+        <h3 v-else> DRAW !</h3>
+      </section>
+      <section id="controls" v-show="!gameover">
+        <button 
+        @click="attackMonster()"
+        >ATTACK</button>
+
+        <button 
+        @click="specialAttack()"
+        :disabled="!(specialAttackCharges >= 3)"
+        >SPECIAL ATTACK</button>
+
+        <button 
+        @click="heal()"
+        >HEAL</button>
+
+        <button
+        @click="surrender()"
+        >SURRENDER</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Battle Log</h2>
+        <ul>
+          <li 
+          v-for="(log, index) in logs"
+          :key="index"
+          :class="[
+          {'log--player': log.who == 'player'},
+          {'log--monster': log.who == 'player' && log.what == 'used SPECIAL MOVE'},
+          {'log--damage': log.who == 'monster' && log.what == 'attacked'},
+          {'log--heal': log.who == 'player' && log.what == 'heal himself'}
+          ]"
+          >
+          {{ log.who }} has {{ log.what }} by {{ log.value == 0 ? "" : log.value }}
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
