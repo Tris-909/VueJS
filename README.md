@@ -160,3 +160,10 @@ const app = Vue.createApp({
   - `class` will decide what class this div will always have
   - `:class` stands for v-bind:class. This is used for binding new class based on the codition. In this case, dynamicStyle is that condition.
   - `@click` is for onCLickHandler
+
+### List rendering with VueJS and conditional rendering
+
+- v-if="", v-else-if="" and v-else to conditional rendering. (remove the element)
+- v-show (add display="none" to the element but does not mean that the element is not existed)
+- v-for="(item, index) in items" for list rendering, child element is maybe <p>{{ item }}</p>
+- v-for="num in 10"
