@@ -167,3 +167,45 @@ const app = Vue.createApp({
 - v-show (add display="none" to the element but does not mean that the element is not existed)
 - v-for="(item, index) in items" for list rendering, child element is maybe <p>{{ item }}</p>
 - v-for="num in 10"
+
+### Create a component just like React and pass props to it :
+
+- The idea about components in VueJS is somewhat the same like React. You create a piece chunk of code that works at the same way as a Vue app but now we can call it "mini Vuea app" and connect all of mini app into 1 big application VueJS. (React same :) )
+
+- In the example below, we will create all components inside of one file but section 6 we will learn how to divide them into many files. This example will be the combinaiton of list rendering and vuejs component so obviously you can create a component and only use it once.
+
+```javascript
+const root = Vue.createApp({
+  data() {
+    return {
+      users: [
+              {
+                  name: 'Manuel Lorenz',
+              },
+              {
+                  name: 'Julie Jones',
+              }
+      ]
+    }
+  }
+});
+
+root.component('name-of-the-component', {
+  props: ['user']
+  template: `
+    <h1>{{ user.name }}</h1>
+  `,
+});
+
+root.mount('#app');
+```
+
+```html
+<div id="app">
+  <name-of-the-component
+    v-for="(user, index) in users"
+    :user="user"
+    :key="index"
+  />
+</div>
+```
