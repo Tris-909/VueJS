@@ -209,3 +209,8 @@ root.mount('#app');
   />
 </div>
 ```
+
+### Create new project
+
+- Installing VueCLI first : npm install -g @vue/cli
+- Go to the directory and create new project : vue create my-first-app
