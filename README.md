@@ -220,3 +220,6 @@ root.mount('#app');
 - Things you need to remember :
   - You can change state but not props.
   - Use $emit=("function-name", argument) in a method of a child component to communicate to parent component and bind that method to an element. Then, go to parent component, bind the $emit by calling @function-name='this.parentMethod' and build the method in the parent component to establish communication between those two.
+  - Avoiding props drilling by using "provide - inject". use 'provide' for parent components and 'inject' for child components to get acecss to these props. 'inject' works like 'props'
+  - `slot` is used as childComponents for wraper components.
+  - you can have many `slot`, but on the second `slot` you have to add `name` attribute to it to distinc it with the default slot. You also have to add <template v-slot:the-name-of-the-slot>childComponents</template> where you use your not-default slot
