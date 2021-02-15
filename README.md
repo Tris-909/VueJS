@@ -214,3 +214,9 @@ root.mount('#app');
 
 - Installing VueCLI first : npm install -g @vue/cli
 - Go to the directory and create new project : vue create my-first-app
+
+### Components in VueJS
+
+- Things you need to remember :
+  - You can change state but not props.
+  - Use $emit=("function-name", argument) in a method of a child component to communicate to parent component and bind that method to an element. Then, go to parent component, bind the $emit by calling @function-name='this.parentMethod' and build the method in the parent component to establish communication between those two.
