@@ -223,3 +223,8 @@ root.mount('#app');
   - Avoiding props drilling by using "provide - inject". use 'provide' for parent components and 'inject' for child components to get acecss to these props. 'inject' works like 'props'
   - `slot` is used as childComponents for wraper components.
   - you can have many `slot`, but on the second `slot` you have to add `name` attribute to it to distinc it with the default slot. You also have to add <template v-slot:the-name-of-the-slot>childComponents</template> where you use your not-default slot
+
+### FORM
+
+- v-model Modifier like v-model.number, v-model.lazy
+- v-model working different with radio-buttons and checkboxes, if you have a group of checkboxes (radiobuttons), Vs checkboxes you need to have v-model point to a data for each checkboxes and they should have different value. Vs radiobuttons, you also need to have v-model for each input but make sure it point to an array that you save in data method and they all have different value field.
