@@ -228,3 +228,43 @@ root.mount('#app');
 
 - v-model Modifier like v-model.number, v-model.lazy
 - v-model working different with radio-buttons and checkboxes, if you have a group of checkboxes (radiobuttons), Vs checkboxes you need to have v-model point to a data for each checkboxes and they should have different value. Vs radiobuttons, you also need to have v-model for each input but make sure it point to an array that you save in data method and they all have different value field.
+
+### Life-Cycle
+
+- mounted() {}
+- created() {}
+
+### ROUTER
+
+- npm i vue-router
+- Go to your main.js file :
+
+```javascript
+import { createRouter, createWebHistory } from "vue-router";
+import Component from "";
+const routes = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {
+      path: "/pathName",
+      component: Component,
+    },
+    {
+      path: "/:notFound(.*)",
+      component: NotFoundPage,
+    },
+  ],
+});
+
+app = createApp(App);
+app.use(routes);
+app.mount("#root");
+```
+
+- Go to your main page where you want to show your routes, It could be in App.vue and using <router-view></router-view>, Inside this tag will be all your routes.
+
+- If you want to change the URL, use <router-link to="/">HomePage</router-link> for example
+
+- If you want to force change in the URL in any internal functions then uses : this.$router.push('/pathName') or this.$router.back() or this.$router.forward()
+
+- this.$route.params.parameterName wil give you access to a parameter has name of paramaterName
